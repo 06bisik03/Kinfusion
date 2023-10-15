@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Suez+One&display=swap');
+body {
+    margin: 0px;
+    padding: 0px;
+    height: 400vh;
+    font-family: 'Playfair Display', serif;
+    
+}
+.page_container {
+    height:100%;
+    width:100%;
+    display: grid;
+}
+.page_details {
+    height:auto;
+
+    background-color: red;
+}

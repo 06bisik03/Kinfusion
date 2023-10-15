@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./files/Navbar";
+import styles from "./App.module.css";
+import Home from "./files/Home";
+import  { useEffect, useState } from 'react';
 
 function App() {
+  const [col, setCol] = useState(false);
+
+  useEffect(() => {
+    function handleScroll() {
+      if (window.scrollY > 0) {
+        setCol(true);
+      } else {
+        setCol(false);
+      }
+    }
+  
+    window.addEventListener('scroll', handleScroll);
+  
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.page_container}>
+      <Navbar col={col}/>
+
+      <div className={styles.page_details}>
+        <Home />
+      </div>
     </div>
   );
 }
