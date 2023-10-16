@@ -31,6 +31,7 @@ function App() {
         <Home />
         <Products />
         <ProductChoice />
+        
       </div>
     </div>
   );

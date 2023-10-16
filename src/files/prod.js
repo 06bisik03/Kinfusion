@@ -35,7 +35,7 @@ export const delicaciesProd = [
         product_img: "https://www.freeiconspng.com/uploads/dark-chocolate-cookie-picture-symbol-22.png",
         
     },  {
-        product_name: "American Vanilla Cookie",
+        product_name: "Vanilla Cookie",
         product_price: 4.99,
         product_img: "https://www.pngkit.com/png/full/962-9623258_choco-vanilla-cookies-png.png",
         
