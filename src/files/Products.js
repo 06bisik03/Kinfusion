@@ -9,7 +9,7 @@ const Products = () => {
           in Africa!
         </div>
         <div className={styles.btn}>
-          <button> Order a coffee!</button>
+          <button className={styles.btnn}> Order a coffee!</button>
         </div>
       </div>
       <div className={styles.products}>

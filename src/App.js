@@ -4,6 +4,7 @@ import Home from "./files/Home";
 import  { useEffect, useState } from 'react';
 import Products from "./files/Products";
 import ProductChoice from "./files/ProductChoice";
+import Premium from "./files/Premium";
 
 function App() {
   const [col, setCol] = useState(false);
@@ -31,7 +32,8 @@ function App() {
         <Home />
         <Products />
         <ProductChoice />
-        
+        <Premium />
+
       </div>
     </div>
   );

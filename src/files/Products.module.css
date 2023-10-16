@@ -38,7 +38,7 @@ grid-template-rows: 50% 50%;
     justify-content: center;
 
 }
-button {
+.btnn {
     width: 9em;
     height: 3em;
     border-radius: 30em;
@@ -52,7 +52,7 @@ button {
                 -6px -6px 12px #ffffff;
    }
    
-.container button::before {
+.btnn::before {
     content: '';
     width: 0;
     height: 3em;
@@ -66,7 +66,7 @@ button {
     z-index: -1;
    }
    
-.container button:hover::before {
+.btnn:hover::before {
     width: 9em;
    }
 
