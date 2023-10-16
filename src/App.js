@@ -2,6 +2,8 @@ import Navbar from "./files/Navbar";
 import styles from "./App.module.css";
 import Home from "./files/Home";
 import  { useEffect, useState } from 'react';
+import Products from "./files/Products";
+import ProductChoice from "./files/ProductChoice";
 
 function App() {
   const [col, setCol] = useState(false);
@@ -27,6 +29,8 @@ function App() {
 
       <div className={styles.page_details}>
         <Home />
+        <Products />
+        <ProductChoice />
       </div>
     </div>
   );

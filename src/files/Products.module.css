@@ -1,0 +1,124 @@
+.container {
+    margin-top: 5vh;
+    height: 65vh;
+width:100%;
+display: grid;
+grid-template-rows: 50% 50%;
+    background-color: white;
+}
+.title {
+    width:100%;
+    display: grid;
+    grid-template-columns: 60% 40%;
+
+}
+.slogan {
+    width:80%;
+    height:40%;
+    align-self: center;
+    justify-self: center;
+    font-size: 30px;
+    letter-spacing: 1.2px;
+
+
+
+}
+.sloganDecor {
+    width:15%;
+    height:5%;
+    background-color: orange;
+}
+.btn {
+    width:80%;
+    height:40%;
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+button {
+    width: 9em;
+    height: 3em;
+    border-radius: 30em;
+    font-size: 15px;
+    font-family: inherit;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 6px 6px 12px #c5c5c5,
+                -6px -6px 12px #ffffff;
+   }
+   
+.container button::before {
+    content: '';
+    width: 0;
+    height: 3em;
+    border-radius: 30em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to right, #fff767 0%, #ff9500 100%);
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+   }
+   
+.container button:hover::before {
+    width: 9em;
+   }
+
+   .products{ 
+    width:70%;
+    justify-self: center;
+    display: grid;
+    grid-template-columns: 20% 20% 20%;
+    justify-content: space-between;
+
+   }
+   .product {
+    width:100%;
+    display: grid;
+    grid-template-rows:50% 50%;
+    letter-spacing: .2px;
+
+   }
+   .productImg {
+    width:100%;
+    height: 100%;
+    justify-content: center;
+    position: relative;
+    display: flex;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+    align-items: center;
+
+   }
+   .product img {
+    max-height: 80%;
+
+    position:absolute;
+   }
+   .productDetail {
+    width:100%;
+    text-align: center;
+    display: grid;
+    grid-template-rows: 40% 60%;
+   }
+   .productDetail >div:nth-child(1) {
+    font-size: 23px;
+    display: flex;
+justify-content: center;
+    font-weight: 900;
+color:rgb(206, 134, 0);
+   }
+   .productDetail >div:nth-child(2) {
+    font-size: 17px;
+
+    display: flex;
+    justify-content: center;
+   }
+   .productImg:hover {
+    transform: translateY(-10%);
+   }

@@ -4,6 +4,7 @@
     font-size: 17px;
     transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
     position: fixed;
+    z-index: 9999;
 }
 .elements {
     width: 85%;
