@@ -1,0 +1,156 @@
+.container {
+    width:100%;
+    height: 55vh;
+    display: grid;
+
+    margin-top: 15vh;
+    grid-template-rows: 20% 52% 28%;
+    background: linear-gradient(to bottom right, rgb(78, 78, 78), rgb(12, 12, 12));
+    color:rgb(159, 159, 159);
+}
+.logo {
+    width:80%;
+    display: flex;
+    justify-self: center;
+
+    
+}
+.logoTitle {
+    width:100%;
+    font-size: 23px;
+    display:grid;
+    align-items: flex-end;
+    
+}
+.middle {
+    width:80%;
+    justify-self: center;
+    border-bottom: 1px solid grey;
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    gap: 50px;
+}
+
+.email {
+    width:100%;
+    display: grid;
+    grid-template-columns: 60% 40%;
+
+
+
+}
+
+.signup {
+    width:100%;
+    height:50%;
+   
+
+    display: grid;
+    grid-template-rows: 20% 80%;
+    align-self: center;
+}
+
+.signup input {
+    align-self: center;
+    width: 90%;
+    height:60%;
+
+    border-radius: 5px;
+    border: none;
+}
+
+
+
+
+
+
+.btn {
+    width:100%;
+    height:60%;
+    align-self: center;
+    display: flex;
+
+}
+.email button{
+    align-self: center;
+  padding: 10% 23%;
+  transform: translateY(18%);
+  background: #000;
+  border:0;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: helvetica;
+  font-size: 12px;
+  letter-spacing: 3px;
+  position: relative;
+  transition:         all .4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  cursor: pointer;
+  display: block;
+
+}
+
+.email button::after,
+.email button::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+    opacity: 0;
+  transition:         all .4s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.email button::after{
+    width: 30px;
+    height: 1px;
+    background: white;
+    transform: translateX(-3px);
+    margin-top: 0px;
+}
+
+.email button::before{
+    content: "";
+    transform: rotate(-135deg) translateX(50%);
+    width: 11px;
+    height: 11px;
+    background: transparent;
+    border-left: 1px solid white;
+    border-bottom: 1px solid white;
+  margin-top: -1px;
+}
+
+
+.email button:hover{
+  padding: 15px 60px 15px 20px;
+}
+
+.email button:hover::after,
+.email button:hover::before{
+  opacity: 1;
+  right: 15px;
+}
+
+.contact {
+    width:100%;
+    height: 80%;
+    align-self: center;
+    display: grid;
+
+    grid-template-rows: 40% 60%;
+}
+.contact > div:nth-child(1) {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+}
+.contact > div:nth-child(2) {
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+}
+.last {
+    width:100%;
+    display: grid;
+    align-items: center;   
+    justify-content: center;
+}

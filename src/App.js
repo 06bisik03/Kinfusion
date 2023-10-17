@@ -5,7 +5,8 @@ import  { useEffect, useState } from 'react';
 import Products from "./files/Products";
 import ProductChoice from "./files/ProductChoice";
 import Premium from "./files/Premium";
-
+import Blog from "./files/Blog";
+import Footer from "./files/Footer";
 function App() {
   const [col, setCol] = useState(false);
 
@@ -33,6 +34,8 @@ function App() {
         <Products />
         <ProductChoice />
         <Premium />
+        <Blog />
+        <Footer />
 
       </div>
     </div>

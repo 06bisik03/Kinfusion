@@ -78,5 +78,6 @@
 }
 .home_left_detail_expl >div:nth-child(1) {
     font-size: 20px;
+    color:orange;
     font-weight: 800;
 }

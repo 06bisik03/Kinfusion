@@ -16,6 +16,7 @@
     justify-content: space-between;
 }
 .brand {
+    margin-left: -6%;
     flex: 5;
     width:100%;
     align-items: center;
