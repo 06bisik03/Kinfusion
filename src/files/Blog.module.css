@@ -4,6 +4,7 @@
     display: grid;
     grid-template-rows: 1fr 9fr;
     gap: 5%;
+    margin-top: 10vh;
     cursor:pointer;
 
 }

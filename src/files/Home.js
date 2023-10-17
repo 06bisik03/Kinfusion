@@ -5,7 +5,7 @@ const Home = () => {
       <div className={styles.home_left}>
         <div className={styles.home_left_content}>
           <div className={styles.home_left_slogan}>
-            <div>Awake your senses with each cup of coffee</div>
+            <div>Awaken your senses with each cup of coffee</div>
             <div className={styles.home_left_inc}>
               Treat yourself with our delicious and lux coffee!
             </div>

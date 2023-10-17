@@ -1,6 +1,6 @@
 import styles from "./Navbar.module.css";
-const Navbar = ({ col }) => {
-  console.log(col);
+const Navbar = ({ col,setWindow }) => {
+
   return (
     <div
       className={styles.container}
@@ -8,10 +8,10 @@ const Navbar = ({ col }) => {
       <div className={styles.elements}>
         <div className={styles.brand}>Kinfusion</div>
         <div className={styles.navigation}>
-          <div>Home</div>
-          <div>Products</div>
-          <div>Premium</div>
-          <div>Blog</div>
+          <div onClick={() => setWindow(0)}>Home</div>
+          <div onClick={() => setWindow(1)}>Products</div>
+          <div onClick={() => setWindow(2)}>Premium</div>
+          <div onClick={() => setWindow(3)}>Blog</div>
         </div>
       </div>
     </div>
