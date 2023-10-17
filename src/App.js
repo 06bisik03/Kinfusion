@@ -10,7 +10,6 @@ import { useRef } from "react";
 import Footer from "./files/Footer";
 function App() {
   const [col, setCol] = useState(false);
-  const [curr, setCurr] = useState(0);  
   const homeRef = useRef(null);
   const productsRef = useRef(null);
   const premiumRef = useRef(null);

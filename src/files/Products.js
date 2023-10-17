@@ -15,7 +15,7 @@ const Products = () => {
       <div className={styles.products}>
         <div className={styles.product}>
           <div className={styles.productImg}>
-            <img src="/images/coffeebean.png"/>
+            <img alt="x"src="/images/coffeebean.png"/>
           </div>
           <div className={styles.productDetail}>
             <div>Lux Coffee Beans</div>
@@ -24,7 +24,7 @@ const Products = () => {
         </div>
         <div className={styles.product}>
           <div className={styles.productImg}>
-          <img src="/images/cookie.png"/>
+          <img alt="x"src="/images/cookie.png"/>
           </div>
           <div className={styles.productDetail}>
             <div>Delicious Cookies</div>
@@ -33,7 +33,7 @@ const Products = () => {
         </div>
         <div className={styles.product}>
           <div className={styles.productImg}>
-          <img src="/images/coffeecup.png"/>
+          <img alt="x"src="/images/coffeecup.png"/>
           </div>
           <div className={styles.productDetail}>
             <div>Enjoy at Home</div>

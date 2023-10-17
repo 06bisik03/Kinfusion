@@ -9,7 +9,7 @@ const Blog = () => {
       <div className={styles.details}>
         <div className={styles.blog}>
           <div className={styles.blogImg}>
-            <img src="https://images.alphacoders.com/129/1290988.jpg" />
+            <img alt="x"src="https://images.alphacoders.com/129/1290988.jpg" />
           </div>
           <div className={styles.blogDetails}>
             <div className={styles.blogTitle}>10 Coffee Recommendations</div>
@@ -31,7 +31,7 @@ const Blog = () => {
         </div>
         <div className={styles.blog}>
           <div className={styles.blogImg}>
-            <img src="https://wallpapers.com/images/featured/cup-of-coffee-4tc627vmaw0tiqiv.jpg" />
+            <img alt="x" src="https://wallpapers.com/images/featured/cup-of-coffee-4tc627vmaw0tiqiv.jpg" />
           </div>
           <div className={styles.blogDetails}>
             <div className={styles.blogTitle}>

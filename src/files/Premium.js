@@ -12,8 +12,8 @@ const Premium = () => {
       </div>
       <div className={styles.details}>
         <div className={styles.images}>
-          <img src="/images/cif2.avif" />
-          <img src="/images/ddd.webp" />
+          <img alt="x"src="/images/cif2.avif" />
+          <img alt="x"src="/images/ddd.webp" />
         </div>
         <div className={styles.expl}>
           <div className={styles.productName}>

@@ -51,7 +51,7 @@ const ShowRelatedItem = ({ item }) => {
   return (
     <div className={styles.itemContainer}>
       <div className={styles.itemImg}>
-        <img src={item.product_img} />
+        <img alt="x"src={item.product_img} />
       </div>
       <div className={styles.itemDetails}>
         <div>
