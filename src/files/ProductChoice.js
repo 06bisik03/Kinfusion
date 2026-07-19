@@ -1,68 +1,70 @@
+import { useState } from "react";
 import styles from "./ProductChoice.module.css";
-import { cakes, coffeeProds, delicaciesProd } from "./prod";
-import { useEffect, useState } from "react";
-const ProductChoice = () => {
+import { collections } from "./prod";
+
+const BagIcon = () => (
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M5 8h14l-1 12H6L5 8Z" /><path d="M9 9V6a3 3 0 0 1 6 0v3" />
+  </svg>
+);
+
+const ProductChoice = ({ onAdd }) => {
   const [active, setActive] = useState(0);
-  const [prods, setProds] = useState(delicaciesProd);
-  useEffect(() => {
-    if (active === 0) {
-      setProds(delicaciesProd);
-    } else if (active === 1) {
-      setProds(coffeeProds);
-    } else {
-      setProds(cakes);
-    }
-  }, [active]);
+  const [notice, setNotice] = useState("");
+  const products = collections[active].products;
+
+  const addProduct = (product) => {
+    onAdd();
+    setNotice(`${product.product_name} added to your bag`);
+    window.clearTimeout(ProductChoice.noticeTimer);
+    ProductChoice.noticeTimer = window.setTimeout(() => setNotice(""), 2400);
+  };
+
   return (
     <div className={styles.container}>
-      <div className={styles.choiceBars}>
-        <div
-          className={styles.choice}
-          onClick={() => setActive(0)}
-          style={{ borderBottom: active === 0 ? "1px solid black" : "none" }}>
-          <div>Delicacies</div>
-          <div>4 products</div>
-        </div>
-        <div
-          className={styles.choice}
-          onClick={() => setActive(1)}
-          style={{ borderBottom: active === 1 ? "1px solid black" : "none" }}>
-          <div>Coffee and hot drinks</div>
-          <div>4 products</div>
-        </div>
-        <div
-          className={styles.choice}
-          onClick={() => setActive(2)}
-          style={{ borderBottom: active === 2 ? "1px solid black" : "none" }}>
-          <div>Cakes</div>
-          <div>4 products</div>
-        </div>
-      </div>
-      <div className={styles.products}>
-        {prods.map((item, index) => {
-          return <ShowRelatedItem item={item} key={index} />;
-        })}
-      </div>
-    </div>
-  );
-};
-export default ProductChoice;
-const ShowRelatedItem = ({ item }) => {
-  return (
-    <div className={styles.itemContainer}>
-      <div className={styles.itemImg}>
-        <img alt="x"src={item.product_img} />
-      </div>
-      <div className={styles.itemDetails}>
+      <div className={styles.heading} data-reveal>
         <div>
-          <div>{item.product_name}</div>
-          <div>$ {item.product_price}</div>
+          <span className={styles.kicker}>Curated in London</span>
+          <h2>The collection</h2>
         </div>
-
-        <div className={styles.product_add}>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="white"height="1.5em" viewBox="0 0 448 512"><path d="M352 160v-32C352 57.42 294.579 0 224 0 153.42 0 96 57.42 96 128v32H0v272c0 44.183 35.817 80 80 80h288c44.183 0 80-35.817 80-80V160h-96zm-192-32c0-35.29 28.71-64 64-64s64 28.71 64 64v32H160v-32zm160 120c-13.255 0-24-10.745-24-24s10.745-24 24-24 24 10.745 24 24-10.745 24-24 24zm-192 0c-13.255 0-24-10.745-24-24s10.745-24 24-24 24 10.745 24 24-10.745 24-24 24z"/></svg>
-        </div>
+        <p>A considered edit for every expression of your daily ritual.</p>
       </div>
+
+      <div className={styles.tabs} role="tablist" aria-label="Product collections" data-reveal>
+        {collections.map((collection, index) => (
+          <button
+            key={collection.id}
+            className={active === index ? styles.active : ""}
+            onClick={() => setActive(index)}
+            role="tab"
+            aria-selected={active === index}
+          >
+            <span>0{index + 1}</span>{collection.label}
+          </button>
+        ))}
+      </div>
+
+      <div className={styles.products} key={collections[active].id}>
+        {products.map((product, index) => (
+          <article className={styles.card} key={product.product_name} style={{ "--delay": `${index * 80}ms` }}>
+            <div className={styles.imageWrap}>
+              <img src={product.product_img} alt={product.product_name} />
+              <div className={styles.cardIndex}>K / {String(index + 1).padStart(2, "0")}</div>
+              <button onClick={() => addProduct(product)} aria-label={`Add ${product.product_name} to bag`}>
+                <BagIcon /><span>Add to bag</span>
+              </button>
+            </div>
+            <div className={styles.details}>
+              <div><h3>{product.product_name}</h3><p>{product.note}</p></div>
+              <strong>£{product.product_price}</strong>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className={`${styles.notice} ${notice ? styles.showNotice : ""}`} role="status" aria-live="polite">{notice}</div>
     </div>
   );
 };
+
+export default ProductChoice;

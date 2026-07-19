@@ -1,87 +1,88 @@
-import Navbar from "./files/Navbar";
+import { useEffect, useRef, useState } from "react";
 import styles from "./App.module.css";
+import Navbar from "./files/Navbar";
 import Home from "./files/Home";
-import { useEffect, useState } from "react";
 import Products from "./files/Products";
 import ProductChoice from "./files/ProductChoice";
 import Premium from "./files/Premium";
 import Blog from "./files/Blog";
-import { useRef } from "react";
 import Footer from "./files/Footer";
+
 function App() {
-  const [col, setCol] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [bagCount, setBagCount] = useState(0);
   const homeRef = useRef(null);
   const productsRef = useRef(null);
   const premiumRef = useRef(null);
   const blogRef = useRef(null);
-  useEffect(() => {
-    function handleScroll() {
-      if (window.scrollY > 0) {
-        setCol(true);
-      } else {
-        setCol(false);
-      }
-    }
 
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
- 
-
-
-
-  const scrollToSection = (sectionIndex) => {
-    let sectionRef;
-
-    switch (sectionIndex) {
-      case 0:
-        sectionRef = homeRef;
-        break;
-      case 1:
-        sectionRef = productsRef;
-        break;
-      case 2:
-        sectionRef = premiumRef;
-        break;
-      case 3:
-        sectionRef = blogRef;
-        break;
-      default:
-        sectionRef = homeRef;
-    }
-
-    if (sectionRef.current) {
-      sectionRef.current.scrollIntoView({ behavior: "smooth" });
-    }
+  const refs = {
+    home: homeRef,
+    products: productsRef,
+    premium: premiumRef,
+    blog: blogRef,
   };
 
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 28);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
+  useEffect(() => {
+    const elements = document.querySelectorAll("[data-reveal]");
+    if (!window.IntersectionObserver) {
+      elements.forEach((element) => element.classList.add("is-visible"));
+      return undefined;
+    }
 
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.14, rootMargin: "0px 0px -6%" }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollToSection = (section) => {
+    refs[section]?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const addToBag = () => setBagCount((count) => count + 1);
 
   return (
-    <div className={styles.page_container}>
-      <Navbar col={col} setWindow={scrollToSection} />
+    <div className={styles.page}>
+      <Navbar scrolled={scrolled} onNavigate={scrollToSection} bagCount={bagCount} />
 
-      <div className={styles.page_details}>
-        <div ref={homeRef}>
-          <Home />
-        </div>
-        <div ref={productsRef}>
-          <Products /> <ProductChoice />
-        </div>
-        <div  ref={premiumRef}>
-          <Premium />
-        </div>
-        <div ref={blogRef}>
+      <main>
+        <section ref={homeRef} className={styles.anchor}>
+          <Home onNavigate={scrollToSection} />
+        </section>
+
+        <section ref={productsRef} className={styles.anchor}>
+          <Products onNavigate={scrollToSection} />
+          <ProductChoice onAdd={addToBag} />
+        </section>
+
+        <section ref={premiumRef} className={styles.anchor}>
+          <Premium onAdd={addToBag} />
+        </section>
+
+        <section ref={blogRef} className={styles.anchor}>
           <Blog />
-        </div>
-        <div>
-          <Footer />
-        </div>
-      </div>
+        </section>
+      </main>
+
+      <Footer onNavigate={scrollToSection} />
     </div>
   );
 }

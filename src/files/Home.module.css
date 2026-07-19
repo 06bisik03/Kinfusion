@@ -1,83 +1,287 @@
 .container {
-    width:100%;
-    height:100vh;
-    color:rgb(205, 205, 205);
-    display: grid;
-    grid-template-columns: 50% 50%;
-    
-}
-.home_left {
-    width:100%;
-    display: grid;
-    background: linear-gradient(to bottom right, rgb(78, 78, 78), rgb(12, 12, 12));
-}
-.home_right {
-    width: 100%;
-    background-image: url('/public/images/coffee.jpeg');
-    background-size: cover;
-}
-.home_left_content {
-    width:75%;
-    height:80%;
-    justify-self: center;
-    align-self: flex-end;
-    margin-bottom: 5%;
-
-    display: grid;
-    grid-template-rows: 70% 30%;
-}
-.home_left_slogan {
-    width:100%;
-    justify-self: center;
-    display: grid;
-    grid-template-rows: 70% 30%;
-    border-bottom: 1px rgba(255, 208, 122, 0.784) solid;
-    font-size: 40px;
-    line-height: 180%;
-    letter-spacing: 3px;
-    align-items: center;
-    text-transform: uppercase;
-
-
-}
-.home_left_inc {
-    width:100%;
-
-    display: flex;
-    font-size: 15px;
-    line-height: 180%;
-    align-items: center;
-    letter-spacing: 2px;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(0, 47.5%) minmax(0, 52.5%);
+  color: var(--ivory);
+  background: var(--deep);
 }
 
-.home_left_details {
-    width:100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap:20px;
-
+.content {
+  position: relative;
+  z-index: 2;
+  min-height: 100svh;
+  padding: clamp(130px, 15vh, 180px) clamp(42px, 5.6vw, 92px) 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.home_left_detail {
-    width:100%;
-    display: grid;
-    grid-template-rows: 50% 50%;
 
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: clamp(28px, 4vh, 48px);
+  color: var(--gold-light);
+  font-size: 9px;
+  letter-spacing: 0.21em;
+  text-transform: uppercase;
+  animation: riseIn 900ms 150ms both;
 }
-.home_left_detail_title {
-    width:100%;
-    font-size: 35px;
-    display: flex;
-    align-items: center;
 
+.eyebrow span {
+  width: 35px;
+  height: 1px;
+  background: currentColor;
 }
-.home_left_detail_expl {
-    width:100%;
-    display: grid;
-    font-size: 13px;
 
+.content h1 {
+  max-width: 660px;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(62px, 6.5vw, 112px);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.82;
+  animation: riseIn 1000ms 260ms both;
 }
-.home_left_detail_expl >div:nth-child(1) {
-    font-size: 20px;
-    color:orange;
-    font-weight: 800;
+
+.content h1 em {
+  display: block;
+  color: var(--gold-light);
+  font-weight: 400;
+}
+
+.intro {
+  width: min(100%, 440px);
+  margin: clamp(30px, 4vh, 48px) 0 0;
+  color: rgba(243, 239, 231, 0.68);
+  font-size: clamp(13px, 1vw, 15px);
+  font-weight: 300;
+  line-height: 1.8;
+  animation: riseIn 1000ms 380ms both;
+}
+
+.ctas {
+  margin-top: clamp(28px, 4vh, 44px);
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  animation: riseIn 1000ms 480ms both;
+}
+
+.primaryCta {
+  min-width: 215px;
+  height: 56px;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--deep);
+  background: var(--ivory);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 300ms ease, color 300ms ease;
+}
+
+.primaryCta svg {
+  width: 19px;
+  transition: transform 300ms ease;
+}
+
+.primaryCta:hover { color: var(--ivory); background: var(--gold); }
+.primaryCta:hover svg { transform: translateX(4px); }
+
+.textCta {
+  padding: 10px 0 5px;
+  color: rgba(243, 239, 231, 0.76);
+  background: transparent;
+  border-bottom: 1px solid rgba(243, 239, 231, 0.44);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.proof {
+  width: calc(100% - clamp(84px, 11.2vw, 184px));
+  position: absolute;
+  right: clamp(42px, 5.6vw, 92px);
+  bottom: clamp(28px, 4vh, 50px);
+  left: clamp(42px, 5.6vw, 92px);
+  padding-top: 19px;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: end;
+  gap: clamp(28px, 3vw, 52px);
+  border-top: 1px solid rgba(243, 239, 231, 0.16);
+  animation: riseIn 1000ms 650ms both;
+}
+
+.proof > div:not(.signature) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.proof strong {
+  color: var(--gold-light);
+  font-family: var(--serif);
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.proof div span {
+  color: rgba(243, 239, 231, 0.47);
+  font-size: 7px;
+  letter-spacing: 0.11em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.signature {
+  justify-self: end;
+  font-family: var(--serif);
+  font-size: 16px;
+  font-style: italic;
+  opacity: 0.55;
+}
+
+.signature span { margin: 0 6px; }
+
+.visual {
+  --pointer-x: 0px;
+  --pointer-y: 0px;
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.image {
+  position: absolute;
+  inset: -20px;
+  background: url("../../public/images/coffee.jpeg") 50% 52% / cover no-repeat;
+  transform: translate(var(--pointer-x), var(--pointer-y)) scale(1.04);
+  animation: imageEnter 1600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.visualShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(15, 13, 11, 0.2), transparent 40%), linear-gradient(0deg, rgba(10, 8, 7, 0.38), transparent 38%);
+}
+
+.issue {
+  position: absolute;
+  top: 112px;
+  right: 36px;
+  writing-mode: vertical-rl;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.issue span { color: var(--gold-light); margin-top: 10px; }
+
+.seal {
+  position: absolute;
+  right: clamp(26px, 4vw, 70px);
+  bottom: clamp(70px, 9vh, 110px);
+  width: 118px;
+  height: 118px;
+  display: grid;
+  place-items: center;
+  color: var(--ivory);
+  border-radius: 50%;
+  backdrop-filter: blur(3px);
+  animation: riseIn 1000ms 700ms both;
+}
+
+.seal svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: spin 22s linear infinite;
+}
+
+.seal text { fill: currentColor; font-family: var(--sans); font-size: 7px; letter-spacing: 0.19em; }
+.seal > span { font-family: var(--serif); font-size: 34px; font-style: italic; }
+
+.scrollCue {
+  position: absolute;
+  bottom: 25px;
+  left: 34px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 7px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.scrollCue span {
+  width: 36px;
+  height: 1px;
+  background: currentColor;
+}
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes imageEnter {
+  from { opacity: 0; transform: scale(1.14); }
+  to { opacity: 1; transform: scale(1.04); }
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-height: 760px) and (min-width: 801px) {
+  .content { padding-top: 110px; padding-bottom: 110px; }
+  .content h1 { font-size: clamp(56px, 6vw, 88px); }
+  .proof { bottom: 24px; }
+}
+
+@media (max-width: 1000px) and (min-width: 801px) {
+  .textCta,
+  .signature { display: none; }
+  .proof { grid-template-columns: auto auto; }
+  .primaryCta { min-width: 210px; }
+}
+
+@media (max-width: 800px) {
+  .container { position: relative; display: block; }
+  .content {
+    min-height: 100svh;
+    padding: 128px 24px 120px;
+    justify-content: center;
+    background: linear-gradient(90deg, rgba(11, 9, 8, 0.84), rgba(11, 9, 8, 0.42) 75%, rgba(11, 9, 8, 0.26));
+  }
+  .content h1 { max-width: 600px; font-size: clamp(58px, 18vw, 96px); }
+  .intro { max-width: 390px; color: rgba(255,255,255,.74); }
+  .visual { position: absolute; inset: 0; z-index: 0; }
+  .image { background-position: 54% 50%; }
+  .visualShade, .seal, .issue { display: none; }
+  .proof { right: 24px; bottom: 28px; left: 24px; width: auto; grid-template-columns: auto auto; }
+  .signature { display: none; }
+  .scrollCue { display: none; }
+}
+
+@media (max-width: 500px) {
+  .content { padding: 108px 20px 120px; justify-content: flex-start; }
+  .eyebrow { margin: 9vh 0 32px; }
+  .content h1 { font-size: clamp(52px, 17vw, 76px); }
+  .intro { max-width: 330px; margin-top: 28px; font-size: 12px; }
+  .ctas { margin-top: 26px; gap: 20px; }
+  .primaryCta { min-width: 195px; height: 52px; padding: 0 18px; }
+  .textCta { display: none; }
+  .proof { gap: 30px; }
+  .proof strong { font-size: 22px; }
 }
